@@ -1,0 +1,9 @@
+{
+    "browser": "chrome",
+    "browsers_list": [
+        "chrome",
+        "firefox",
+        "edge"
+    ],
+    "portal_url": "https://id.atlassian.com/login"
+}
