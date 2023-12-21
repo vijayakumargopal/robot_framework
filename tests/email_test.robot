@@ -11,7 +11,8 @@ Test case 1 For Email Page
 
     [Documentation]     Type the email id and validate the label presents accordingly
     [Setup]             Test Setup For Open Browser Close Browser
-    [Teardown]          Test Teardown For Open Browser Close Browser
+    # [Teardown]          Test Teardown For Open Browser Close Browser
+    [Tages]             email_page
 
     ##########################################################################
     # To Run this test

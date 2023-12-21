@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.7.0 on win32)" generated="20231220 15:00:48.109" rpa="false" schemaversion="3">
+<suite id="s1" name="Pasword Test" source="C:\Users\GopalVij\Documents\github_coding_learning\robot_framework\tests\pasword_test.robot">
+<test id="s1-t1" name="Test Case 1" line="10">
+<kw name="Test Setup For Open Browser Close Browser" library="fixtures" type="SETUP">
+<kw name="Fetch Data From Inputs" library="read_input">
+<var>${browser_name}</var>
+<arg>browser</arg>
+<msg timestamp="20231220 15:00:48.321" level="INFO">${browser_name} = chrome</msg>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<kw name="Fetch Data From Inputs" library="read_input">
+<var>${portal_url}</var>
+<arg>portal_url</arg>
+<msg timestamp="20231220 15:00:48.321" level="INFO">${portal_url} = https://id.atlassian.com/login</msg>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${browser_name}&quot; == &quot;chrome&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${path of driver}</var>
+<arg>drivers/chromedriver.exe</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231220 15:00:48.321" level="INFO">${path of driver} = drivers/chromedriver.exe</msg>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${browser_name}&quot; == &quot;firefox&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${path of driver}</var>
+<arg>drivers/geckodriver.exe</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${browser_name}&quot; == &quot;edge&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${path of driver}</var>
+<arg>drivers/msedgedriver.exe</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>INVALID BROWSER NAME</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</kw>
+<status status="NOT RUN" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</branch>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:48.321"/>
+</if>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${portal_url}</arg>
+<arg>${browser_name}</arg>
+<arg>executable_path=${path of driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231220 15:00:48.321" level="INFO">Opening browser 'chrome' to base url 'https://id.atlassian.com/login'.</msg>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:52.996"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20231220 15:00:52.996" endtime="20231220 15:00:53.124"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:48.321" endtime="20231220 15:00:53.124"/>
+</kw>
+<kw name="Enter Email ID" library="email_page">
+<arg>vijayakumar.gopalbanu@gmail.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${email_input_box}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20231220 15:00:53.124" endtime="20231220 15:00:54.372"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${email_input_box}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231220 15:00:54.372" level="INFO">Typing text 'vijayakumar.gopalbanu@gmail.com' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20231220 15:00:54.372" endtime="20231220 15:00:54.692"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:53.124" endtime="20231220 15:00:54.692"/>
+</kw>
+<kw name="Click Continue" library="email_page">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${continue_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231220 15:00:54.696" level="INFO">Clicking element 'id:login-submit'.</msg>
+<status status="PASS" starttime="20231220 15:00:54.693" endtime="20231220 15:00:54.791"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${password entry box}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231220 15:00:54.791" endtime="20231220 15:00:55.526"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:54.693" endtime="20231220 15:00:55.526"/>
+</kw>
+<kw name="Validate Label Text" library="email_page">
+<arg>vijayakumar.gopalbanu@gmail.com</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${validate_email_label}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20231220 15:00:55.526" endtime="20231220 15:00:55.552"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${label_text}</var>
+<arg>${validate_email_label}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231220 15:00:55.599" level="INFO">${label_text} = vijayakumar.gopalbanu@gmail.com</msg>
+<status status="PASS" starttime="20231220 15:00:55.552" endtime="20231220 15:00:55.599"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${label_text}</arg>
+<arg>${expected_label_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231220 15:00:55.599" endtime="20231220 15:00:55.599"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:55.526" endtime="20231220 15:00:55.599"/>
+</kw>
+<kw name="Enter Password" library="password_page">
+<arg>Vijay@123</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${password entry box}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231220 15:00:55.604" level="INFO">Typing text 'Vijay@123' into text field 'id:password'.</msg>
+<status status="PASS" starttime="20231220 15:00:55.604" endtime="20231220 15:00:55.775"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:55.603" endtime="20231220 15:00:55.775"/>
+</kw>
+<kw name="Click Login Button" library="password_page">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${login button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231220 15:00:55.783" level="INFO">Clicking element 'id:login-submit'.</msg>
+<status status="PASS" starttime="20231220 15:00:55.783" endtime="20231220 15:00:55.880"/>
+</kw>
+<kw name="Change Browser URL">
+<arg>https://support.atlassian.com/trello/</arg>
+<msg timestamp="20231220 15:00:55.881" level="FAIL">No keyword with name 'Change Browser URL' found.</msg>
+<status status="FAIL" starttime="20231220 15:00:55.881" endtime="20231220 15:00:55.881"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${board button}</arg>
+<arg>40s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20231220 15:00:55.881" endtime="20231220 15:00:55.881"/>
+</kw>
+<status status="FAIL" starttime="20231220 15:00:55.775" endtime="20231220 15:00:55.881"/>
+</kw>
+<kw name="Test Teardown For Open Browser Close Browser" library="fixtures" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231220 15:00:55.892" endtime="20231220 15:00:58.364"/>
+</kw>
+<status status="PASS" starttime="20231220 15:00:55.891" endtime="20231220 15:00:58.364"/>
+</kw>
+<doc>Enter a email id and validate the label presents</doc>
+<tag>password_page</tag>
+<status status="FAIL" starttime="20231220 15:00:48.321" endtime="20231220 15:00:58.364">No keyword with name 'Change Browser URL' found.</status>
+</test>
+<status status="FAIL" starttime="20231220 15:00:48.109" endtime="20231220 15:00:58.364"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">password_page</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Pasword Test">Pasword Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
